@@ -40,7 +40,7 @@ namespace HAM_DeBugger.Core.Debugging.DebugConsole
         private GUIStyle _suggestionStyle;
         private GUIStyle _errorStyle;
 
-        [MenuItem("Tools/DebugMaster")]
+        [MenuItem("HAM_DeBugger/Console")]
         public static void OpenWindow()
         {
             var w = GetWindow<HamDebuggerCommandWindow>("HAM_DeBugger console");

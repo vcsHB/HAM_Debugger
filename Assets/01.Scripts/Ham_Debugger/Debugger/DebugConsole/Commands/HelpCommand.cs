@@ -5,7 +5,7 @@ namespace HAM_DeBugger.Core.Debugging.DebugConsole
     [ConsoleCommand("help")]
     public class HelpCommand : GeneralCommand
     {
-        public HelpCommand() : base("help", "Display DebugMaster Helper") { }
+        public HelpCommand() : base("help", "Display HAM_DeBugger Helper") { }
 
         protected override bool Execute(string[] args, out string errorMessage)
         {
@@ -13,7 +13,7 @@ namespace HAM_DeBugger.Core.Debugging.DebugConsole
 
             AddLogLine($"<b>=================================</b>", 20, ColorConstant.SubThemeColor);
             //AddLogLine($"<size=30><color={ColorConstant.MainThemeColor}><b>[Debug Master]</b> Helper</color></size>\n\n<color=#40c2ac>Debug master command list</color>\n");
-            AddLogLine($"<b>[Debug Master]</b> Helper</color></size>\n\n<color=#40c2ac>Debug master command list</color>", 30, ColorConstant.MainThemeColor);
+            AddLogLine($"<b>[HAM_DeBugger]</b> Helper</color></size>\n\n<color=#40c2ac>HAM_DeBugger command list</color>", 30, ColorConstant.MainThemeColor);
             foreach (var kv in commands)
             {
                 PrintCommandRecursive(kv.Key, kv.Value, 0);

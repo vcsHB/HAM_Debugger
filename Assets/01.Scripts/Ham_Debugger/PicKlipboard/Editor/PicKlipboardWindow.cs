@@ -5,7 +5,7 @@ using System.Reflection;
 using System.IO;
 using System.Linq;
 
-namespace HAM_DeBugger.ObjectClipboardUtility
+namespace HAM_DeBugger.PicKlipboardUtility
 {
     public enum AssetFilteringType
     {
@@ -21,7 +21,7 @@ namespace HAM_DeBugger.ObjectClipboardUtility
     /// <summary>
     /// Utility to temporarily store objects from the Project or Scene.
     /// </summary>
-    public class ObjectClipboardWindow : EditorWindow
+    public class PicKlipboardWindow : EditorWindow
     {
         // Clipboard Data Structure
         [System.Serializable]
@@ -50,7 +50,7 @@ namespace HAM_DeBugger.ObjectClipboardUtility
         // EditorPrefs Keys
         #region EditorPrefs Const Keys 
 
-        private const string EDITORPREFS_TOOL_NAME = "ObjectClipboard_";
+        private const string EDITORPREFS_TOOL_NAME = "PicKlipboard_";
         private const string EDITORPREFS_INSID = "_InstanceID_";
         private const string EDITORPREFS_GUID = "_GUID_";
         private const string EDITORPREFS_LOCK = "_Lock_";
@@ -65,9 +65,7 @@ namespace HAM_DeBugger.ObjectClipboardUtility
         private bool _isMenuOpen = false;
         private string _searchString = "";
 
-
-        // Internal Tool State
-        private AssetFilteringType _filterType = AssetFilteringType.All; // <-- 이 변수를 추가합니다.
+        private AssetFilteringType _filterType = AssetFilteringType.All;
 
 
         // Tool Options (Save by EditorPrefs)
@@ -99,14 +97,14 @@ namespace HAM_DeBugger.ObjectClipboardUtility
 
 
         // Main
-        [MenuItem("Window/Object Clipboard")]
-        public static void OpenObjectClipboard()
+        [MenuItem("HAM_DeBugger/PicKlipboard")]
+        public static void OpenPicKlipboard()
         {
 
-            ObjectClipboardWindow window = GetWindow<ObjectClipboardWindow>("Object Clipboard");
+            PicKlipboardWindow window = GetWindow<PicKlipboardWindow>("PicKlipboard");
 
-            Texture2D icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/01.Scripts/Core/ObjectClipboard/Editor/Custom_Icons/CustomIcon_ObjectClipboard_icon_1.png");
-            window.titleContent = new GUIContent("Object Clipboard", icon);
+            Texture2D icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/01.Scripts/Ham_Debugger/PicKlipboard/Editor/Custom_Icons/Logo_PicKlipboard.png");
+            window.titleContent = new GUIContent("PicKlipboard", icon);
             window.minSize = new Vector2(200, 150);
         }
 
@@ -124,14 +122,14 @@ namespace HAM_DeBugger.ObjectClipboardUtility
             _projectName = GetProjectName();
 
             Texture2D customSelectTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(
-                "Assets/01.Scripts/Core/ObjectClipboard/Editor/Custom_Icons/CustomIcon_ObjectClipboard_icon_2.png"
+                "Assets/01.Scripts/Ham_Debugger/PicKlipboard/Editor/Custom_Icons/CustomIcon_PicKlipboard_icon_2.png"
             );
 
             Texture2D customDeleteTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(
-                "Assets/01.Scripts/Core/ObjectClipboard/Editor/Custom_Icons/CustomIcon_ObjectClipboard_icon_4.png"
+                "Assets/01.Scripts/Ham_Debugger/PicKlipboard/Editor/Custom_Icons/CustomIcon_PicKlipboard_icon_4.png"
             );
             Texture2D customLockTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(
-                "Assets/01.Scripts/Core/ObjectClipboard/Editor/Custom_Icons/CustomIcon_ObjectClipboard_icon_5.png"
+                "Assets/01.Scripts/Ham_Debugger/PicKlipboard/Editor/Custom_Icons/CustomIcon_PicKlipboard_icon_5.png"
             );
             _iconToolSelect = new GUIContent(customSelectTexture);
             _iconToolSelect.tooltip = "Clipboard Object Select";
@@ -215,7 +213,7 @@ namespace HAM_DeBugger.ObjectClipboardUtility
                 _deleteButtonStyle = new GUIStyle(GUI.skin.button);
 
                 Texture2D tex = new Texture2D(1, 1);
-                Color redColor = new Color(0.8f, 0.2f, 0.2f);
+                Color redColor = new Color(0.3f, 0.2f, 0.2f);
 
                 tex.SetPixel(0, 0, redColor);
                 tex.Apply();
