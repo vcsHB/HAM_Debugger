@@ -5,6 +5,7 @@ namespace HAM_DeBugger.Core.Debugging.DebugConsole
     [ConsoleCommand("set/timescale")]
     public class SetTimeScaleCommand : GeneralCommand
     {
+        // base("TokenName", "Description", "<Parameter>")
         public SetTimeScaleCommand() : base("timescale", "Setting TimeScale", "<int>") { }
 
 
